@@ -2,10 +2,10 @@
 //from A.J. Koning and J.P. Delaroche, Nucl. Phys. A 713 (2003) 231-310
 //entitled Local and global nucleon optical models from 1 keV to 200 MeV
 #include "/home/caijw/prjs/include/cpp/outColor.h"
-void koning_2003(const double &A,const double &Z,const double &Kp){
+void koning_2003_p(const double &A,const double &Z,const double &Kp){
 	double vps[4]={59.30+21.0*(A-Z-Z)/A-0.024*A, 0.007067+4.23e-6*A, 1.729e-5+1.136e-8*A, 7e-9};
 	double wps[2]={14.667+0.009629*A, 73.55+0.0795*A};
-	double dps[3]={16.-16.*(A-Z-Z)/A, 0.018+0.003802/(1+exp((A-156.)/8.)), 11.5};
+	double dps[3]={16.+16.*(A-Z-Z)/A, 0.018+0.003802/(1+exp((A-156.)/8.)), 11.5};
 	double vsops[2]={5.922+0.003*A, 0.004};
 	double wsops[2]={-3.1, 160.};
 	double Epf=-8.4075+0.01378*A;
@@ -34,7 +34,7 @@ void koning_2003(const double &A,const double &Z,const double &Kp){
 }
 //from R.L. Varner, W.J. Thompson and et al, Phys. Rep. 201, 57 (1991)
 //entitled A global nucleon optical model potential
-void varner_1991(const double &A,const double &Z,const double &Kp){
+void varner_1991_p(const double &A,const double &Z,const double &Kp){
 	const double V0=52.9, Vt=13.1,Ve=-0.299;
 	const double r0=1.25, r00=-0.225,a0=0.690;
 	double Rc=1.238*cbrt(A)+0.116;
@@ -64,7 +64,7 @@ void p_gOMP(double A,double Z, double Kp){
 		cout<<BOLDRED<<"A must NOT be smaller than Z!!!"<<RESET<<"\n";
 		exit(1);
 	}
-	cout<<"incident "<<BOLDRED<<"proton"<<RESET<<": "<<Kp<<" MeV; Target A="<<A<<", Z="<<Z<<"/"<<endl;
-	koning_2003(A,Z,Kp);
-	varner_1991(A,Z,Kp);
+	cout<<"incident "<<BOLDRED<<"proton"<<RESET<<": "<<Kp<<" MeV; Target A="<<BOLDRED<<A<<RESET<<", Z="<<BOLDRED<<Z<<RESET<<"\n";
+	koning_2003_p(A,Z,Kp);
+	varner_1991_p(A,Z,Kp);
 }
