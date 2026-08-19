@@ -1,4 +1,4 @@
-//proton global OMP
+//deuteron OMP in ADWA using nucleon global OMPs
 //from A.J. Koning and J.P. Delaroche, Nucl. Phys. A 713 (2003) 231-310
 //entitled Local and global nucleon optical models from 1 keV to 200 MeV
 #include "/home/caijw/prjs/include/cpp/outColor.h"
@@ -18,7 +18,8 @@ void d_ADWA_gOMP(double A,double Z, double Kd){
 		cout<<BOLDRED<<"A must NOT be smaller than Z!!!"<<RESET<<"\n";
 		exit(1);
 	}
-	cout<<"incident "<<BOLDRED<<"deuteron"<<RESET<<": "<<Kd<<" MeV; Target A="<<A<<", Z="<<Z<<"/"<<endl;
+	cout<<"incident "<<BOLDRED<<"ADWA deuteron"<<RESET<<": "<<Kd<<" MeV; Target A="<<A<<", Z="<<Z<<"/"<<endl;
 	koning_2003(A,Z,Kd);
+	cout<<"\n"<<;
 	varner_1991(A,Z,Kd);
 }
